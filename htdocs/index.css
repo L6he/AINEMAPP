@@ -1,0 +1,29 @@
+@font-face{
+            font-family: 'HandelGothicRegular';
+            src: url('font/HandelGothicRegular.ttf') format('truetype');
+            src: local('?'), 
+            url('font/HandelGothicRegular.ttf') format('truetype')
+        }
+
+        span {
+            color: #76B900;
+        }
+
+        a {
+            color: #76B900;
+        }
+
+        table, td {
+            border: 1px solid white;
+        }
+
+        .lh {
+            margin: 10px 0;
+            list-style-type: none;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family:HandelGothicRegular;
+        } 

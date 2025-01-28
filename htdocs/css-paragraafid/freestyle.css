@@ -1,0 +1,143 @@
+#romanempire 
+{
+	width: 450px;
+	background-color: lightgreen;
+	border-left: 5px solid green;
+	border-bottom: 5px solid green;
+	font-family: "Times New Roman";
+	font-size: 12pt;
+    text-indent: 2cm;
+	text-align: left;
+    margin-top: 12pt;
+	margin-bottom: 0pt;
+	margin-left: 0cm;
+	margin-right: 5cm;
+	padding-left: 0cm;
+	line-height: 1.5;
+}
+
+#sandsundertale 
+{
+	width: 450px;
+	background-color: lightblue;
+	border-right: 9px double blue;
+	border-bottom: 9px double blue;
+	font-family: "Comic Sans MS";
+	font-size: 10pt;
+    text-indent: 3cm;
+	text-align: justify;
+    margin-top: 12pt;
+	margin-bottom: 12pt;
+	margin-left: 2.5cm;
+	margin-right: 2cm;
+	padding-left: 0cm;
+	line-height: 2;
+}
+
+#newvegascourier 
+{
+	width: 380px;
+	background-color: #f1dde0;
+	border-top: 9px double purple;
+	border-bottom: 9px double purple;
+	font-family: "Courier new";
+	font-size: 12pt;
+    text-indent: 0cm;
+	text-align: center;
+    margin-top: 0pt;
+	margin-bottom: 12pt;
+	margin-left: 3.5cm;
+	margin-right: 3.5cm;
+	padding-left: 0cm;
+	line-height: 1;
+}
+
+.aurplelines
+{
+	display: block;
+    width: 100%;
+    border-bottom: 3px purple solid;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+#aerials 
+{
+	width: 540px;
+	background-color: white;
+	border-top: 3px dotted red;
+	border-bottom: 3px dotted red;
+	border-left: 3px dotted red;
+	border-right: 3px dotted red;
+	font-family: "Arial", sans-serif;
+	font-size: 13pt;
+	text-align: left;
+	margin-left: 1.5cm;
+	margin-right: 1cm;
+	text-indent: 0cm;
+	padding-left: 0cm;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
+	line-height: 25pt;
+	padding: 3px;
+}
+
+#caliber {
+	width: 580px;
+	background-color: white;
+	border-bottom: 6px dashed purple;
+	border-right: 6px dashed purple;
+	font-family: "Calibri", sans-serif;
+	font-size: 14pt;
+	text-align: left;
+	margin-left: 0cm;
+	margin-right: 1cm;
+	text-indent: 0cm;
+	padding-left: 0cm;
+	margin-top: 10pt;
+	margin-bottom: 10pt;
+	line-height: 25pt;
+	padding: 3px;
+}
+
+.magiciansred 
+{
+	color: red;
+}
+
+.bruford
+{
+	color: rgb(65, 132, 247);
+}
+
+.temperance{
+	background-color: yellow;
+	border-color: red;
+	border-style: solid;
+	display: inline-block;
+	text-indent: 0;
+	height: 1.2em;
+	line-height: 1;
+}
+
+#shblblblblblb {
+	padding-left: 3.5cm;
+    display: inline-block;
+}
+
+
+.bigS{
+	color: purple;
+	float: left;
+	font-family: "Algerian";
+	font-weight: bold;
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-left: 3px;
+    padding-right: 8px;
+}
+
+.big {
+    font-size: 150%;
+}

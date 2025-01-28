@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="et">
+	<head>
+		<title>Harjutus 6</title>
+		<meta charset ="UTF-8">
+        <style>
+            .big {
+                font-size: 200%;
+            }
+        </style>
+	</head>
+	
+	<body>
+		<h2>Vormide loomine</h2>
+		<form>
+			<table>
+				<tr>
+					<td><label for="username">Kasutajanimi:</label></td>
+					
+					<td><input type="text" id="username" name="username" maxlength="6" placeholder="max pikkus 6"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="course">Kursus:</label></td>
+					
+					<td><input type="text" id="course" name="course" maxlength="3" placeholder="max pikkus 3"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="department">Osakonna number: </label></td>
+					
+					<td><input type="number" id="department" name="department" value="1" min="1"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="password">Parool:</label></td>
+					
+					<td><input type="password" id="password" minlength="3" name="password"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="service">Vali teenus:</label></td>
+					
+					<td>
+						<select id="service" name="service">
+							<option value="cheap">Odav 0,59€</option>
+								<option value="cheap">Keskmine 59,99€</option>
+							<option value="cheap">Kallis 1200,69€</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td><label>Roll:</label></td>
+					
+					<td>
+                        <br>
+						<input type="radio" id="admin" name="role" value="Admin">
+							<label for="admin">Admin</label><br>
+						<input type="radio" id="moderator" name="role" value="Moderaator">
+							<label for="moderator">Moderaator</label><br>
+						<input type="radio" id="user" name="role" value="User">
+							<label for="user">User</label><br>
+					</td>
+				</tr>
+                    
+				<tr>
+					<td><label for="agreement">Nõustun tingimustega:</label></td>
+						<td><input type="checkbox" id="agreement" name="agreement"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="selfintro">Enesetutvustus:</label></td>
+						<td><textarea id="selfintro" name="selfintro" rows="13"></textarea></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+						<button type="reset">Tühjenda väljad</button>
+							<button type="submit">Saada</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+        <br><br><br>
+        <a class="big" href="https://markomaripuu23.thkit.ee/">Index</a>
+	</body>
+</html>
