@@ -3,15 +3,183 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarkvara arendusprotsessi tehtud tööde konspekt</title>
     <style>
-        .big {
-            font-size: 300%;
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101a27; /* Darker but not completely black for dark mode */
+            color: #ecf0f1; /* Light text for dark mode */
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ecf0f1;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        ol {
+            margin-left: 20px;
+            list-style-type: decimal;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+            li a {
+                color: #3498db;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                li a:hover {
+                    color: #1abc9c;
+                }
+        #gitlink {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+            color: #3498db;
+            transition: color 0.3s ease;
+        }
+
+            #gitlink:hover {
+                color: #1abc9c;
+            }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #444; /* Dark color for dark mode */
+            margin: 30px 0;
+            transition: border-top-color 0.3s ease;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ecf0f1;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: color 0.3s ease;
+        }
+
+        /* Button style */
+        /*
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        */
+
+        /* Dark/Light mode toggle button */
+        #mode-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 10px 15px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            #mode-toggle:hover {
+                background-color: #3498db;
+                color: white;
+            }
+
+        /* Center the button */
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh; /* Adjust height for centering */
+        }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #ecf0f1; /* Light background for light mode */
+            color: #2c3e50; /* Dark text for light mode */
+        }
+
+        h1.light-mode, p.light-mode, ol.light-mode {
+            color: #2c3e50; /* Dark text for light mode */
+        }
+
+        hr.light-mode {
+            border-top: 2px solid #888; /* Lighter color for light mode */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            ol {
+                font-size: 1.1rem;
+            }
+
+            p {
+                font-size: 1rem;
+                margin: 0 10px;
+            }
+
+            /*
+            .btn {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+            */
+
+            .center-container {
+                height: auto; /* Allow more flexibility for small screens */
+                padding-top: 50px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <button id="mode-toggle">Light Mode</button>
+
     <h1>Tarkvara arendusprotsessi tehtud tööde konspekt</h1>
     <ol>
         <li><a href="waterfall.html">Waterfall arendusmudel</a></li>
@@ -19,7 +187,46 @@
 
     <hr />
     <h1>Minust</h1>
-    <p>consume</p>
+    <p>Orken Tromson, bi autistlik õpilane Tallinnast.</p>
+
+    <a href="https://github.com/L6he" id="gitlink">Minu vitthub</a>
+
+    <!--
+    <div class="center-container">
+        <a href="waterfall.html" class="btn">Explore More</a>
+    </div>
+    -->
+
+    <script>
+        const modeToggleBtn = document.getElementById('mode-toggle');
+        let isDarkMode = true;
+
+        // Function to toggle dark/light mode
+        modeToggleBtn.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                document.body.style.backgroundColor = '#101a27'; // Darker blue background for dark mode
+                document.body.style.color = '#ecf0f1'; // Light text for dark mode
+                modeToggleBtn.textContent = 'Light Mode';
+                document.body.classList.remove('light-mode');
+                document.querySelector('hr').classList.remove('light-mode');
+                document.querySelector('h1').classList.remove('light-mode');
+                document.querySelectorAll('h1')[1].classList.remove('light-mode'); // Second <h1> adjustment
+                document.querySelector('p').classList.remove('light-mode');
+                document.querySelector('ol').classList.remove('light-mode');
+            } else {
+                document.body.style.backgroundColor = '#ecf0f1'; // Light background for light mode
+                document.body.style.color = '#2c3e50'; // Dark text for light mode
+                modeToggleBtn.textContent = 'Dark Mode';
+                document.body.classList.add('light-mode');
+                document.querySelector('hr').classList.add('light-mode');
+                document.querySelector('h1').classList.add('light-mode');
+                document.querySelectorAll('h1')[1].classList.add('light-mode'); // Second <h1> adjustment
+                document.querySelector('p').classList.add('light-mode');
+                document.querySelector('ol').classList.add('light-mode');
+            }
+        });
+    </script>
 </body>
 
 </html>
