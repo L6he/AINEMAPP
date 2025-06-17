@@ -1,232 +1,270 @@
 <!DOCTYPE html>
-<html lang="et">
-
+<html lang="ee">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarkvara arendusprotsessi tehtud tööde konspekt</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarkvara arendusprotsessi tehtud tööde konspekt</title>
+  <style>
+    @font-face {
+      font-family: 'HandelGothicRegular';
+      src: url('https://markomaripuu23.thkit.ee/font/HandelGothicRegular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'amd';
+      src: url('https://markomaripuu23.thkit.ee/font/spyagency.ttf') format('truetype');
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #101a27; /* Darker but not completely black for dark mode */
-            color: #ecf0f1; /* Light text for dark mode */
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+    body {
+      background-color: black;
+      color: white;
+      font-family: HandelGothicRegular;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      /* transition: all 0.5s ease; */
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #ecf0f1;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
+    a {
+      color: #76B900;
+    }
 
-        ol {
-            margin-left: 20px;
-            list-style-type: decimal;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
-        }
+    a:hover {
+      color: #0072CE;
+    }
 
-        li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
+     ol {
+      padding: 0;
+      margin: 0;
+    }
 
-            li a {
-                color: #3498db;
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
+    li {
+      margin: 10px 0;
+    }
 
-                li a:hover {
-                    color: #1abc9c;
-                }
-        #gitlink {
-            display: block;
-            text-align: center;
-            margin-top: 50px;
-            color: #3498db;
-            transition: color 0.3s ease;
-        }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: HandelGothicRegular;
+    }
 
-            #gitlink:hover {
-                color: #1abc9c;
-            }
+    .flashbang {
+      background-color: white !important;
+      color: black !important;
+      font-family: amd !important;
+    }
 
-        hr {
-            border: 0;
-            border-top: 2px solid #444; /* Dark color for dark mode */
-            margin: 30px 0;
-            transition: border-top-color 0.3s ease;
-        }
+    .flashbang a {
+      color: #EC5401 !important;
+    }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ecf0f1;
-            max-width: 800px;
-            margin: 0 auto;
-            transition: color 0.3s ease;
-        }
+    .flashbang a:hover {
+      color: #C7363D !important;
+    }
 
-        /* Button style */
-        /*
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.1rem;
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+    .flashbang button {
+      font-family: amd !important;
+    }
 
-        .btn:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-        }
-        */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 9999;
+      pointer-events: none;
+    }
 
-        /* Dark/Light mode toggle button */
-        #mode-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            padding: 10px 15px;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+    #whiteOverlay {
+      background: white;
+      opacity: 0;
+      display: none;
+      transition: opacity 8s ease;
+    }
 
-            #mode-toggle:hover {
-                background-color: #3498db;
-                color: white;
-            }
-
-        /* Center the button */
-        .center-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60vh; /* Adjust height for centering */
-        }
-
-        /* Light mode styles */
-        body.light-mode {
-            background-color: #ecf0f1; /* Light background for light mode */
-            color: #2c3e50; /* Dark text for light mode */
-        }
-
-        h1.light-mode, p.light-mode, ol.light-mode {
-            color: #2c3e50; /* Dark text for light mode */
-        }
-
-        hr.light-mode {
-            border-top: 2px solid #888; /* Lighter color for light mode */
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            ol {
-                font-size: 1.1rem;
-            }
-
-            p {
-                font-size: 1rem;
-                margin: 0 10px;
-            }
-
-            /*
-            .btn {
-                font-size: 1rem;
-                padding: 8px 15px;
-            }
-            */
-
-            .center-container {
-                height: auto; /* Allow more flexibility for small screens */
-                padding-top: 50px;
-            }
-        }
-    </style>
+    /* #blackOverlay {
+      background: black;
+      opacity: 0;
+      display: none;
+      transition: opacity 5s ease; */
+    }
+  </style>
 </head>
-
 <body>
-    <button id="mode-toggle">Light Mode</button>
-
+  <div>
     <h1>Tarkvara arendusprotsessi tehtud tööde konspekt</h1>
     <ol>
-        <li><a href="waterfall.html">Waterfall arendusmudel</a></li>
+      <li><a href="waterfall.html" target="_blank">Waterfall arendusmudel</a></li>
+      <li><a href="ToodeteProgramm.html" target="_blank">Toodete Programm</a></li>
+      <li><a href="https://docs.google.com/document/d/19oVe_qEvRncD9f9rhmoBnro2vUJde-6xlkYlR8MpsL8" target="_blank">Filmiregistri dokument</a></li>
+      <li><a href="Project/index.html" target="_blank">Microsoft product bad</a></li>
     </ol>
+    <br />
+    <a href="https://github.com/L6he" target="_blank">Minu github</a>
+    <br /><br />
+    <a href="https://markomaripuu23.thkit.ee/index.html">Mine tagasi zone lehe indeksi</a>
+    <br /><br />
+    <button id="flashbangBtn">Flashbang!</button>
+  </div>
 
-    <hr />
-    <h1>Minust</h1>
-    <p>Orken Tromson, bi autistlik õpilane Tallinnast.</p>
+  <div id="whiteOverlay" class="overlay"></div>
+  <!-- <div id="blackOverlay" class="overlay"></div> -->
+  <audio id="flashSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/flashbang-1.wav" preload="auto"></audio>
+  <audio id="darkReturnSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/reverseflashbang.wav" preload="auto"></audio>
+  <audio id="hoverSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/zoom1.wav" preload="auto"></audio>
+  <audio id="unhoverSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/zoom2.wav" preload="auto"></audio>
+  <audio id="buttonHoverSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/pinpull.wav" preload="auto"></audio>
+  <audio id="buttonUnhoverSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/pullpin.wav" preload="auto"></audio>
+  <audio id="linkClickSound" src="https://markomaripuu23.thkit.ee/AINEMAPP-main/awp1.wav" preload="auto"></audio>
 
-    <a href="https://github.com/L6he" id="gitlink">Minu vitthub</a>
+  <script>
+    const btn = document.getElementById('flashbangBtn');
+    const whiteOverlay = document.getElementById('whiteOverlay');
+    // const blackOverlay = document.getElementById('blackOverlay');
+    const flashSound = document.getElementById('flashSound');
+    const darkReturnSound = document.getElementById('darkReturnSound');
+    const linkClickSound = document.getElementById('linkClickSound');
 
-    <!--
-    <div class="center-container">
-        <a href="waterfall.html" class="btn">Explore More</a>
-    </div>
-    -->
+    let flashbangOn = false;
+    let flashbangInProgress = false;
+    let showOverlayTimeout = null;
+    let hideOverlayTimeout = null;
 
-    <script>
-        const modeToggleBtn = document.getElementById('mode-toggle');
-        let isDarkMode = true;
+    function resetOverlays() {
+      whiteOverlay.style.display = 'none';
+      whiteOverlay.style.opacity = '0';
+    //   blackOverlay.style.display = 'none';
+    //   blackOverlay.style.opacity = '0';
+    }
 
-        // Function to toggle dark/light mode
-        modeToggleBtn.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            if (isDarkMode) {
-                document.body.style.backgroundColor = '#101a27'; // Darker blue background for dark mode
-                document.body.style.color = '#ecf0f1'; // Light text for dark mode
-                modeToggleBtn.textContent = 'Light Mode';
-                document.body.classList.remove('light-mode');
-                document.querySelector('hr').classList.remove('light-mode');
-                document.querySelector('h1').classList.remove('light-mode');
-                document.querySelectorAll('h1')[1].classList.remove('light-mode'); // Second <h1> adjustment
-                document.querySelector('p').classList.remove('light-mode');
-                document.querySelector('ol').classList.remove('light-mode');
-            } else {
-                document.body.style.backgroundColor = '#ecf0f1'; // Light background for light mode
-                document.body.style.color = '#2c3e50'; // Dark text for light mode
-                modeToggleBtn.textContent = 'Dark Mode';
-                document.body.classList.add('light-mode');
-                document.querySelector('hr').classList.add('light-mode');
-                document.querySelector('h1').classList.add('light-mode');
-                document.querySelectorAll('h1')[1].classList.add('light-mode'); // Second <h1> adjustment
-                document.querySelector('p').classList.add('light-mode');
-                document.querySelector('ol').classList.add('light-mode');
-            }
-        });
-    </script>
+     function stopAllSounds() {
+    flashSound.pause();
+    flashSound.currentTime = 0;
+    darkReturnSound.pause();
+    darkReturnSound.currentTime = 0;
+  }
+
+    function showWhiteOverlayThenLightTheme() {
+    whiteOverlay.style.display = 'block';
+    whiteOverlay.style.opacity = '1';
+
+    showOverlayTimeout = setTimeout(() => {
+      document.body.classList.add('flashbang');
+      btn.textContent = 'Anna mu silmad tagasi!';
+      whiteOverlay.style.opacity = '0';
+
+      hideOverlayTimeout = setTimeout(() => {
+        whiteOverlay.style.display = 'none';
+        flashbangInProgress = false;
+        flashbangOn = true;
+      }, 8000);
+    }, 5000);
+  }
+
+    // function showBlackOverlayFade() {
+    //   blackOverlay.style.display = 'block';
+    //   blackOverlay.style.opacity = '1';
+
+    //   setTimeout(() => {
+    //     blackOverlay.style.opacity = '0';
+    //     setTimeout(() => {
+    //       blackOverlay.style.display = 'none';
+    //     }, 500);
+    //   }, 10); // slight delay to ensure opacity transition triggers
+    // }
+
+    darkReturnSound.volume = 0.50
+
+    btn.addEventListener('click', () => {
+    // Cancel if mid-transition
+    if (flashbangInProgress) {
+      clearTimeout(showOverlayTimeout);
+      clearTimeout(hideOverlayTimeout);
+      resetOverlays();
+      stopAllSounds();
+      darkReturnSound.play();
+      document.body.classList.remove('flashbang');
+      btn.textContent = 'Flashbang!';
+      flashbangOn = false;
+      flashbangInProgress = false;
+      return;
+    }
+
+    // Flashbang on
+    if (!flashbangOn) {
+      flashbangInProgress = true;
+      stopAllSounds();
+      flashSound.play();
+      resetOverlays();
+      showWhiteOverlayThenLightTheme();
+    } else {
+      // Flashbang off
+      stopAllSounds();
+      darkReturnSound.play();
+      resetOverlays();
+      document.body.classList.remove('flashbang');
+      btn.textContent = 'Flashbang!';
+      flashbangOn = false;
+    //   showBlackOverlayFade();
+    }
+  });
+
+  const hoverSound = document.getElementById('hoverSound');
+  const unhoverSound = document.getElementById('unhoverSound');
+  const buttonUnhoverSound = document.getElementById('buttonUnhoverSound');
+
+  buttonHoverSound.volume = 0.50;
+  buttonUnhoverSound.volume = 0.50;
+  hoverSound.volume = 0.25;
+  unhoverSound.volume = 0.25;
+
+function playHoverSound() {
+  hoverSound.play();
+}
+function playUnhoverSound() {
+  unhoverSound.play();
+}
+function playLinkClickSound() {
+  linkClickSound.play();
+}
+
+function playButtonHoverSound() {
+  buttonHoverSound.pause();
+  buttonHoverSound.currentTime = 0;
+  buttonHoverSound.play();
+}
+
+// Apply to all links
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('mouseenter', playHoverSound);
+  link.addEventListener('mouseleave', playUnhoverSound);
+  link.addEventListener('click', playLinkClickSound);
+});
+
+
+// Apply to the button
+btn.addEventListener('mouseenter', playButtonHoverSound);
+
+
+
+function playButtonUnhoverSound() {
+  buttonUnhoverSound.pause();
+  buttonUnhoverSound.currentTime = 0;
+  buttonUnhoverSound.play();
+}
+
+btn.addEventListener('mouseleave', playButtonUnhoverSound);
+
+
+</script>
 </body>
-
 </html>
